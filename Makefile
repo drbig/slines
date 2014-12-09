@@ -5,7 +5,7 @@ STYLE=-nA2s2SHxC100xj
 BINDIR=bin
 PRG=slines
 DEPS=src/lib.o
-VERSION=$(shell git describe --tags --always --dirty --match "[0-9A-Z]*.[0-9A-Z]*")
+VERSION=$(shell git describe --tags --always --dirty --match "[0-9A-Z]*.[0-9A-Z]*" || echo unknown)
 
 .PHONY: all version clean style analyze
 
