@@ -1,0 +1,41 @@
+.TH slines "1" "December 9, 2014"
+.SH NAME
+slines \- find file:line strings and print respective lines
+.SH SYNOPSIS
+.B slines
+[\fIOPTION\fR]...
+.SH DESCRIPTION
+\fBslines\fP reads from standard input and looks for \fIpath:line\fR strings (e.g. /home/user/hello.c:15) and by default prints the file path and the indicated line from that file, with one line before and after that for context.
+
+Note that it will ignore any syntactically valid \fIpath:line\fR strings if the path does not point to an existing file.
+.SH OPTIONS
+.TP
+.BR \-h
+Display help message and exit.
+.TP
+.BR \-v
+Print version and copyright message and exit.
+.TP
+.BR \-f
+Just print the found \fIpath:line\fR. Useful for saving for later or additional processing.
+.TP
+.BR \-c " " \fILINES\fR
+Set the number of context lines to \fILINES\fR. This obviously has no effect if you used the previous option. Zero is a valid number here. Defaults to 1.
+
+Note that the number of context lines is applied before and after the particular line, i.e. total number of lines printed per file is 2*\fILINES\fR+1.
+.SH NOTES
+This utility is intended for use with common compiler/runtime error messages. It assumes all data it reads are text and does not bother with any defensive mechanisms.
+
+If for some reason you work with source files that have lines longer than 4096 bytes the line counting may not work properly. You can increase the limit by editing the source and recompiling (look for \fILINESIZ\fR).
+
+Some programs also report column position - this is ignored on purpose.
+
+Note that this program does not use heap of its own, nor any str*() functions.
+.SH AUTHOR
+Written by Piotr S. Staszewski.
+.SH COPYRIGHT
+Copyright \(co 2014 Piotr S. Staszewski. Licensed under a BSD two-clause license.
+.SH "SEE ALSO"
+.BR grep (1),
+.BR head (1),
+.BR tail (1)
