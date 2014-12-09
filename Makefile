@@ -24,7 +24,7 @@ style:
 	astyle $(STYLE) src/*.c src/*.h
 
 analyze:
-	scan-build make BINDIR=/tmp
+	scan-build --status-bugs make BINDIR=/tmp
 
 $(BINDIR)/$(PRG): $(DEPS)
 	mkdir -p $(BINDIR)/
