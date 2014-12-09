@@ -1,3 +1,5 @@
+// See LICENSE.txt for licensing information.
+
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
