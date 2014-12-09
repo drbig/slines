@@ -87,7 +87,7 @@ bool print_match(match_t m, int c) {
     perror("fopen");
     return false;
   }
-  while (fgets(buffer, BUFSIZ, f) != NULL) {
+  while (fgets(buffer, LINESIZ, f) != NULL) {
     l++;
     if ((l >= s) && (l <= e)) {
       if (l == m.line)
