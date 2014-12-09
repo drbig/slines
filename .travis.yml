@@ -2,4 +2,9 @@ language: c
 compiler:
   - gcc
   - clang
-script: make && make analyze
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq clang
+script:
+  - make
+  - make analyze
