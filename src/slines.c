@@ -10,10 +10,10 @@
 void usage(char *name) {
   fprintf(stderr, "Usage: %s [options]\n\n", name);
   fprintf(stderr, "Options:\n");
-  fprintf(stderr, "\t-h     - print this message and exit\n");
-  fprintf(stderr, "\t-v     - print version and exit\n");
-  fprintf(stderr, "\t-f     - just print file paths\n");
-  fprintf(stderr, "\t-c INT - number of context lines (default: 1)\n");
+  fprintf(stderr, "\t-h       - print this message and exit\n");
+  fprintf(stderr, "\t-v       - print version and exit\n");
+  fprintf(stderr, "\t-f       - just print file paths\n");
+  fprintf(stderr, "\t-c LINES - number of context lines (default: 1)\n");
   exit(EXIT_FAILURE);
 }
 
