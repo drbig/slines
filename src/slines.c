@@ -21,10 +21,10 @@ void usage(char *name) {
 
 int main(int argc, char *argv[]) {
   match_t m;
-  bool f, s;
+  bool f, s, ok;
   int c, o;
 
-  f = true;
+  f = ok = true;
   s = false;
   c = 1;
 
@@ -61,9 +61,9 @@ int main(int argc, char *argv[]) {
       else
         printf("\n");
 
-      print_match(m, c);
+      ok &= print_match(m, c);
       continue;
     }
-    return EXIT_SUCCESS;
+    return ok ? EXIT_SUCCESS : EXIT_FAILURE;
   }
 }

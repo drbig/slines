@@ -75,8 +75,10 @@ match_t find_next(FILE *input) {
 
 bool print_match(match_t m, int c) {
   FILE *f;
+  bool ok;
   int l, s, e;
 
+  ok = true;
   l = 0;
   s = m.line - c;
   e = m.line + c;
@@ -89,6 +91,7 @@ bool print_match(match_t m, int c) {
     perror("fopen");
     return false;
   }
+  errno = 0;
   while (fgets(buffer, LINESIZ, f) != NULL) {
     l++;
     if ((l >= s) && (l <= e)) {
@@ -99,7 +102,12 @@ bool print_match(match_t m, int c) {
     }
     if (l > e)
       break;
+    errno = 0;
+  }
+  if (errno != 0) {
+    perror("fgets");
+    ok = false;
   }
   fclose(f);
-  return true;
+  return ok;
 }
